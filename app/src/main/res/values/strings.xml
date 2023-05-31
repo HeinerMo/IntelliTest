@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">IntelliTest</string>
+    <string name="login_message">Iniciar Sesión</string>
+    <string name="user_name_input">Nombre de usuario</string>
+    <string name="name_input">Nombre Completo</string>
+    <string name="login_button_message">Iniciar Sesión</string>
+    <string name="signup_button_message">Registrarse</string>
+    <string name="signup_invitation">¿No tienes una cuenta?</string>
+    <string name="password_input">Contraseña</string>
+    <string name="password_confirmation_input">Confirmar contraseña</string>
+
+    <string name="home_activity_message">¡Hola de nuevo!</string>
+    <string name="questions_button_message">Realizar Cuestionario</string>
+    <string name="results_button_message">Mis resultados</string>
+    <string name="logout_button_message">Cerrar Sesión</string>
+
+    <string name="signup_view_message">Registrarse</string>
 </resources>
