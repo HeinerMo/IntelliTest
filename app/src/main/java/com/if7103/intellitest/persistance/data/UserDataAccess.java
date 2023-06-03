@@ -14,7 +14,6 @@ public class UserDataAccess extends SQLiteOpenHelper implements com.if7103.intel
     private String tableName = "tb_users";
     private String userNameColumn = "username";
     private String userPasswordColumn = "password";
-
     private String activeColumn = "active";
 
     public UserDataAccess(Context context) {
