@@ -32,27 +32,34 @@
             android:id="@+id/radioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <RadioButton
                 android:id="@+id/radioOption1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4pt"
                 android:layout_weight="1"
-                android:text="Mucho" />
+                android:text="Mucho"
+                android:textColorHighlight="@color/buttons"
+                android:textColorLink="@color/buttons"/>
             <RadioButton
                 android:id="@+id/radioOption2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Poco"
                 android:layout_weight="1"
-                android:layout_margin="4pt"/>
+                android:layout_margin="4pt"
+                android:textColorHighlight="@color/buttons"
+                android:textColorLink="@color/buttons"/>
             <RadioButton
                 android:id="@+id/radioOption3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Nada"
                 android:layout_weight="1"
-                android:layout_margin="4pt"/>
+                android:layout_margin="4pt"
+                android:textColorHighlight="@color/buttons"
+                android:textColorLink="@color/buttons"/>
         </RadioGroup>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

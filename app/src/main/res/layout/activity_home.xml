@@ -57,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="52dp"
+                android:onClick="signOut"
                 android:text="@string/logout_button_message" />
         </LinearLayout>
     </LinearLayout>
