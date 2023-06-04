@@ -10,7 +10,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="TextView"
+        android:padding="20pt"
+        android:text="This is a placeholder text. If you are seeing this, something went really wrong. :("
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +44,8 @@
                 android:layout_weight="1"
                 android:text="Mucho"
                 android:textColorHighlight="@color/buttons"
-                android:textColorLink="@color/buttons"/>
+                android:textColorLink="@color/buttons"
+                android:textSize="18sp"/>
             <RadioButton
                 android:id="@+id/radioOption2"
                 android:layout_width="match_parent"
@@ -50,7 +54,8 @@
                 android:layout_weight="1"
                 android:layout_margin="4pt"
                 android:textColorHighlight="@color/buttons"
-                android:textColorLink="@color/buttons"/>
+                android:textColorLink="@color/buttons"
+                android:textSize="18sp"/>
             <RadioButton
                 android:id="@+id/radioOption3"
                 android:layout_width="match_parent"
@@ -59,7 +64,8 @@
                 android:layout_weight="1"
                 android:layout_margin="4pt"
                 android:textColorHighlight="@color/buttons"
-                android:textColorLink="@color/buttons"/>
+                android:textColorLink="@color/buttons"
+                android:textSize="18sp"/>
         </RadioGroup>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
