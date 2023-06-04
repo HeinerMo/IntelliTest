@@ -1,6 +1,7 @@
 package com.if7103.intellitest.persistance.data;
 
 import com.if7103.intellitest.domain.entity.Question;
+import com.if7103.intellitest.domain.entity.QuestionOption;
 
 import java.util.ArrayList;
 
@@ -60,6 +61,21 @@ public class QuestionDataAccess {
         questions.add(new Question("¿Eres capaz de trabajar efectivamente en equipo, aportando ideas y colaborando con los demás?"));
         questions.add(new Question("¿Tienes habilidades para comunicarte de manera clara y respetuosa?"));
         questions.add(new Question("¿Disfrutas de la oportunidad de aprender de los demás?"));
+
+        int[] basicOption = {12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+        int shift = 0;
+        for (Question q : questions) {
+            QuestionOption[] options = new QuestionOption[3];
+            options[0] = new QuestionOption("Mucho", shiftArray(basicOption, shift));
+            shift++;
+            options[1] = new QuestionOption("Poco", shiftArray(basicOption, shift));
+            shift++;
+            options[2] = new QuestionOption("Nada", shiftArray(basicOption, shift));
+            shift++;
+            q.setOptions(options);
+        }
+
+
     }
 
     public static QuestionDataAccess getInstance() {
@@ -74,8 +90,22 @@ public class QuestionDataAccess {
     }
 
     public void clearOptions() {
-        for (Question question: questions) {
+        for (Question question : questions) {
             question.setResponse("");
         }
+    }
+
+    public int[] shiftArray(int[] arr, int shiftBy) {
+        int length = arr.length;
+        int[] shiftedArray = new int[length];
+        // Calculate the effective shift amount within the array length
+        int shiftAmount = shiftBy % length;
+
+        // Shift the array elements
+        for (int i = 0; i < length; i++) {
+            int newIndex = (i + shiftAmount) % length;
+            shiftedArray[newIndex] = arr[i];
+        }
+        return shiftedArray;
     }
 }
