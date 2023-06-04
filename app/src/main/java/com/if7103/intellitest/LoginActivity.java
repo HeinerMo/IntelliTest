@@ -4,14 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.if7103.intellitest.domain.domain.ApplicationData;
 import com.if7103.intellitest.domain.entity.User;
-import com.if7103.intellitest.persistance.data.UserDataAccess;
+import com.if7103.intellitest.persistance.data.DatabaseController;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -26,10 +24,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        UserDataAccess userDataAccess = new UserDataAccess(this);
+        DatabaseController databaseController = DatabaseController.getInstance(this);
 
         if (checkInputs()) {
-            User user = userDataAccess.getByUsername(editUsername.getText().toString());
+            User user = databaseController.getByUsername(editUsername.getText().toString());
             if (user == null) {
                 this.editUsername.setError("Este usuario no existe.");
             } else {

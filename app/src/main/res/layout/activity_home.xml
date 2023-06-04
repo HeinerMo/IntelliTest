@@ -50,6 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="52dp"
+                android:onClick="launchResultsActivity"
                 android:text="@string/results_button_message" />
 
             <Button

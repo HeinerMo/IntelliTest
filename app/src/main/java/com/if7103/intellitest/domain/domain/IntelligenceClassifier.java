@@ -1,11 +1,17 @@
 package com.if7103.intellitest.domain.domain;
 
+import android.content.Context;
+import android.util.Log;
+
+import com.if7103.intellitest.domain.entity.User;
+import com.if7103.intellitest.persistance.data.DatabaseController;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class IntelligenceClassifier {
-    
+
     private static List<String> getIntelligenceTypes() {
 
         //TODO: This should use the "intelligence" class.
@@ -48,23 +54,46 @@ public class IntelligenceClassifier {
         return EuclidianDistanceCalculator.getTagName(points, getIntelligenceTypes(), getIntelligenceTypesCentroids());
     }
 
-    public static List<String> sortPlayersByIntelligence(List<Integer> personalPoints, List<String> playersNames, List<List<Integer>> playersPoints) {
+    public static List<User> sortPlayersByIntelligence(User user, Context context) {
+        List<User> sortedUsers = new ArrayList<>();
 
-        // TODO: Si es necesario, validar que no se muestre le mismo jugador en la lista.
 
-        List<String> sortedPlayersNames = new ArrayList<>();
-        
-        int playersSize = playersNames.size();
+        DatabaseController databaseController = DatabaseController.getInstance(context);
+        List<User> userList = databaseController.getUsers();
+        //delete current user from user list
+        removeUserByUserName(user, userList);
 
-        for (int i = 0; i < playersSize; i++) {
-            int minIndex = EuclidianDistanceCalculator.getMinDistanceIndex(personalPoints, playersPoints);
-            sortedPlayersNames.add(playersNames.get(minIndex));
+        int playersSize = userList.size();
 
-            playersNames.remove(minIndex);
-            playersPoints.remove(minIndex);
+        List<List<Integer>> usersPoints = new ArrayList<>();
+
+        for (User otherUser : userList) {
+            usersPoints.add(otherUser.getPoints());
+        }
+        if (usersPoints.size() > 0) {
+            for (int i = 0; i < playersSize; i++) {
+                int minIndex = EuclidianDistanceCalculator.getMinDistanceIndex(user.getPoints(), usersPoints);
+                sortedUsers.add(userList.get(minIndex));
+
+                userList.remove(minIndex);
+                usersPoints.remove(minIndex);
+            }
+        }
+        return sortedUsers;
+    }
+
+    private static void removeUserByUserName(User user, List<User> users) {
+        User userToRemove = null;
+        for (User otherUser : users) {
+            if (otherUser.getUserName().equals(user.getUserName())) {
+                userToRemove = otherUser;
+                break;
+            }
         }
 
-        return sortedPlayersNames;
-    } 
+        if (userToRemove != null) {
+            users.remove(userToRemove);
+        }
+    }
 
 }

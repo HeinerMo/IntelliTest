@@ -4,11 +4,11 @@ import java.util.Arrays;
 
 public class QuestionOption {
     private String option;
-    private int[] values;
+    private int value;
 
-    public QuestionOption(String option, int[] values) {
+    public QuestionOption(String option, int value) {
         this.option = option;
-        this.values = values;
+        this.value = value;
     }
 
     public String getOption() {
@@ -19,19 +19,18 @@ public class QuestionOption {
         this.option = option;
     }
 
-    public int[] getValues() {
-        return values;
+    public int getValue() {
+        return value;
     }
 
-    public void setValues(int[] values) {
-        this.values = values;
+    public void setValue(int value) {
+        this.value = value;
     }
-
     @Override
     public String toString() {
         return "QuestionOption{" +
                 "option='" + option + '\'' +
-                ", values=" + Arrays.toString(values) +
+                ", value=" + value +
                 '}';
     }
 }

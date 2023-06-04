@@ -4,14 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.if7103.intellitest.domain.domain.ApplicationData;
 import com.if7103.intellitest.domain.entity.User;
-import com.if7103.intellitest.persistance.data.UserDataAccess;
+import com.if7103.intellitest.persistance.data.DatabaseController;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -28,7 +26,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void signup(View view) {
-        UserDataAccess userDataAccess = new UserDataAccess(this);
+        DatabaseController databaseController = DatabaseController.getInstance(this);
 
         boolean success = true;
 
@@ -54,12 +52,12 @@ public class SignupActivity extends AppCompatActivity {
 
         if (success) {
             User user = new User(editSignUpUserName.getText().toString(), editSignupPassword.getText().toString());
-            User tempUser = userDataAccess.getByUsername(user.getUserName());
+            User tempUser = databaseController.getByUsername(user.getUserName());
             if (tempUser != null) {
                 success = false;
                 editSignUpUserName.setError("Este nombre de usuario no está disponible.");
             } else {
-                userDataAccess.add(user);
+                databaseController.addUser(user);
                 ApplicationData.getData().setUser(user);
                 launchMainView(view);
             }

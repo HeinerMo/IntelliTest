@@ -28,4 +28,10 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    public void launchResultsActivity(View view) {
+        //launch results activity
+        Intent intent = new Intent(HomeActivity.this, ResultsActivity.class);
+        startActivity(intent);
+    }
 }

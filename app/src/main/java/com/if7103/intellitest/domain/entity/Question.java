@@ -5,16 +5,15 @@ public class Question {
     private QuestionOption[] options;
     private String response;
 
-    public Question(String heading, QuestionOption[] options) {
-        this.heading = heading;
-        response = "";
-        this.options = options;
-    }
+    private Intelligence intelligence;
 
     public Question(String heading) {
         this.heading = heading;
         response = "";
         this.options = new QuestionOption[3];
+        options[0] = new QuestionOption("Mucho", 3);
+        options[1] = new QuestionOption("Poco", 2);
+        options[2] = new QuestionOption("Nada", 1);
     }
 
     public String getHeading() {
@@ -58,5 +57,13 @@ public class Question {
 
     public String getResponse() {
         return response;
+    }
+
+    public Intelligence getIntelligence() {
+        return intelligence;
+    }
+
+    public void setIntelligence(Intelligence intelligence) {
+        this.intelligence = intelligence;
     }
 }
